@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Task Management') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -15,6 +15,8 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -33,19 +35,32 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Task') }}</a>
+                            <a class="nav-link" href="{{ route('tasks.index') }}">{{ __('Task') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Project') }}</a>
+                            <a class="nav-link" href="{{ route('projects.index') }}">{{ __('Project') }}</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
-            @yield('content')
+        <main class="py-5 px-2">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card bg-white">
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @yield('content')
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
+    @yield('scripts')
+    @stack('scripts')
 </body>
 </html>

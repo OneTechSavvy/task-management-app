@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h3><strong>Projects</strong></h3>
+            <h3><strong>Edit Project</strong></h3>
             <form action="{{ route('projects.update', $project->id) }}" method="POST">
                 @csrf
                 @method('PUT')
